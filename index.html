@@ -1,0 +1,67 @@
+<!doctype html>
+	<head>
+	  <meta charset="utf-8">
+	
+	
+	  <title>Tweets in radius</title>
+	  <meta name="description" content="">
+	  <meta name="author" content="">
+	
+	  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+	  <meta name="viewport" content="width=device-width,initial-scale=1">
+	
+	  <!-- CSS: implied media=all -->
+	  <!-- CSS concatenated and minified via ant build script-->
+	  <link rel="stylesheet" href="css/style.css">
+	  <!-- end CSS-->
+	
+	  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+	
+	  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+	       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+	       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+	  <script src="js/libs/modernizr-2.0.6.min.js"></script>
+	</head>
+
+	<body onload="initialize()">
+	
+	
+		<h1 class="header roundedBox">Tweets in radius</h1>
+	   	
+	   	<div id="mapDiv"></div>	
+	    
+	    <div id="locationDiv" class="roundedBox">
+	    	<span class="inputHeader">Position:</span>		
+			<input id="latitude" type="text" value="" /> 
+			<input id="longitude" type="text" value="" />
+			<br/>
+			<span class="underlabel"><label for="latitude">Latitude</label></span>
+			<span class="underlabel"><label for="longitude">Longitude</label></span>
+		</div> 
+	
+		<div id="inputDiv" class="roundedBox">
+			<span class="inputHeader">Contestants:</span>
+			<input id="contest1" type="text" value="" /> 
+			vs
+			<input id="contest2" type="text" value="" />
+			<br/>
+			
+			<input type="button" value="Battle" onclick="battle();" />
+	</div>
+	
+	
+		<div id="resultDiv" class="roundedBox">
+			<span class="inputHeader">Results:</span>
+		</div>	
+	
+		<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+		
+		
+		<script defer src="js/plugins.js"></script>
+		<script src="js/script.js"></script>
+		
+	</body>
+</html>
