@@ -1,9 +1,5 @@
-/* Author: 
-
-*/
-
 function checkForNull(value) {
-	if(typeof(value) === 'undefined' || value == null) {
+	if(typeof(value) === 'undefined' || value === null) {
 	    return true;
 	} else {
 		return false;
@@ -12,17 +8,15 @@ function checkForNull(value) {
 
 var mapHandler = function(){
     
-	var tweetHandler = null;
-	
-	var radius = 3000;
-	
-	var resultMap = null;
-	var center = null;
-	var tweetsRadius = null;
+	var tweetHandler = null,
+	    radius = 3000,
+	    resultMap = null,
+	    center = null,
+	    tweetsRadius = null;
 	
 	function initializeMap(lat, long, mapDiv, handler) {
-		var startLatLong;
-		var zoomLevel = 5;
+		var startLatLong,
+			zoomLevel = 5;
 		tweetHandler = handler;
 	    
 		if (checkForNull(lat) || checkForNull(long)) {
@@ -40,18 +34,17 @@ var mapHandler = function(){
 			    mapTypeId: google.maps.MapTypeId.ROADMAP 
 			};
 		
-	   	resultMap = new google.maps.Map(document.getElementById(mapDiv), mapOptions);
-	   	//center = addMarker(startLatLong,'center',centerImg);
-	   	center = startLatLong;
-	   	assignLatLongToInputs();
-	   	assignRadiusToInputs();
+		resultMap = new google.maps.Map(document.getElementById(mapDiv), mapOptions);
+		center = startLatLong;
+		assignLatLongToInputs();
+		assignRadiusToInputs();
 		google.maps.event.addListener(resultMap, 'click', changeCenterOnclick);
 		console.log('map init complete');
 	}
 	
 	function changeCenterOnclick(event) {
-		console.log('changing center onclick');
 		var latLong;
+		console.log('changing center onclick');
 		
 		clearOldResults();
 		
@@ -97,7 +90,6 @@ var mapHandler = function(){
 	}
 	
 	function showRadius(){
-		setRadius();
 		var circleOptions = {
 			      strokeColor: "#33FF66",
 			      strokeOpacity: 0.5,
@@ -109,6 +101,7 @@ var mapHandler = function(){
 			      radius: radius,
 			      clickable: false
 			    };
+		setRadius();
 		tweetsRadius = new google.maps.Circle(circleOptions);
 	}
 	
@@ -127,8 +120,7 @@ var mapHandler = function(){
 	function setRadius() {
 		var inputVal = parseInt($('#radius').attr('value'));
 		console.log("checking input radius: " + inputVal);
-		console.log(typeof(inputVal));
-		if (typeof(inputVal)=='number' ) {
+		if (typeof(inputVal)==='number' ) {
 			console.log('updating radius');
 			radius = inputVal; 
 		}
@@ -156,7 +148,8 @@ var tweetHandler = function(){
 
 
 	function putTweetInResult(tweet) {
-//		var templateMarkup = '<div class="result"><img src="${profile_image_url}" /><p><span>${from_user}</span>${text}</p></div>';
+// var templateMarkup = '<div class="result"><img src="${profile_image_url}"
+// /><p><span>${from_user}</span>${text}</p></div>';
 		var templateMarkup = '<h3><a href="#">${from_user}</a></h3><div class="result"><img src="${profile_image_url}" /><p><span>${from_user}</span>${text}</p></div>';
 		console.log("handling tweet from: " + tweet.from_user);
 		$.template("tweetTemplate", templateMarkup);
